@@ -519,11 +519,11 @@ class TestRepo(TestBase):
 
     def test_init(self):
         with tempfile.TemporaryDirectory() as tdir, cwd(tdir):
-            git_dir_real = "repos/foo/bar.git"
-            git_dir_abs = osp.abspath(git_dir_real)
+            git_dir_relative = "repos/foo/bar.git"
+            git_dir_abs = osp.abspath(git_dir_relative)
 
             # With specific path
-            for path in (git_dir_real, git_dir_abs):
+            for path in (git_dir_relative, git_dir_abs):
                 r = Repo.init(path=path, bare=True)
                 self.assertIsInstance(r, Repo)
                 assert r.bare is True
@@ -560,8 +560,8 @@ class TestRepo(TestBase):
 
             # END for each path
 
-            os.makedirs(git_dir_real)
-            os.chdir(git_dir_real)
+            os.makedirs(git_dir_relative)
+            os.chdir(git_dir_relative)
             r = Repo.init(bare=False)
             assert r.bare is False
             assert not r.has_separate_working_tree()
