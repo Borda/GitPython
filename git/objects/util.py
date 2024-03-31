@@ -568,11 +568,11 @@ class Traversable(Protocol):
                 yield rval
 
             # Only continue to next level if this is appropriate!
-            nd = d + 1
-            if depth > -1 and nd > depth:
+            nb = d + 1
+            if depth > -1 and nb > depth:
                 continue
 
-            addToStack(stack, item, branch_first, nd)
+            addToStack(stack, item, branch_first, nb)
         # END for each item on work stack
 
 

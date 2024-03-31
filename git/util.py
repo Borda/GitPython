@@ -652,7 +652,7 @@ class RemoteProgress:
             op_code |= self.CHECKING_OUT
         else:
             # Note: On Windows it can happen that partial lines are sent.
-            # Hence we get something like "CompreReceiving objects", which is
+            # Hence we get something like "CompareReceiving objects", which is
             # a blend of "Compressing objects" and "Receiving objects".
             # This can't really be prevented, so we drop the line verbosely
             # to make sure we get informed in case the process spits out new

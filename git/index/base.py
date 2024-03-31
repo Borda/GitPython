@@ -194,7 +194,7 @@ class IndexFile(LazyMixin, git_diff.Diffable, Serializable):
 
     def _deserialize(self, stream: IO) -> "IndexFile":
         """Initialize this instance with index values read from the given stream."""
-        self.version, self.entries, self._extension_data, _conten_sha = read_cache(stream)
+        self.version, self.entries, self._extension_data, _contain_sha = read_cache(stream)
         return self
 
     def _entries_sorted(self) -> List[IndexEntry]:
@@ -439,9 +439,9 @@ class IndexFile(LazyMixin, git_diff.Diffable, Serializable):
             # END glob handling
             try:
                 for root, _dirs, files in os.walk(abs_path, onerror=raise_exc):
-                    for rela_file in files:
+                    for real_file in files:
                         # Add relative paths only.
-                        yield osp.join(root.replace(rs, ""), rela_file)
+                        yield osp.join(root.replace(rs, ""), real_file)
                     # END for each file in subdir
                 # END for each subdirectory
             except OSError:
@@ -951,7 +951,7 @@ class IndexFile(LazyMixin, git_diff.Diffable, Serializable):
 
         return entries_added
 
-    def _items_to_rela_paths(
+    def _items_to_real_paths(
         self,
         items: Union[PathLike, Sequence[Union[PathLike, BaseIndexEntry, Blob, Submodule]]],
     ) -> List[PathLike]:
@@ -1025,7 +1025,7 @@ class IndexFile(LazyMixin, git_diff.Diffable, Serializable):
         args.append("--")
 
         # Preprocess paths.
-        paths = self._items_to_rela_paths(items)
+        paths = self._items_to_real_paths(items)
         removed_paths = self.repo.git.rm(args, paths, **kwargs).splitlines()
 
         # Process output to gain proper paths.
@@ -1078,7 +1078,7 @@ class IndexFile(LazyMixin, git_diff.Diffable, Serializable):
         if skip_errors:
             args.append("-k")
 
-        paths = self._items_to_rela_paths(items)
+        paths = self._items_to_real_paths(items)
         if len(paths) < 2:
             raise ValueError("Please provide at least one source and one destination of the move operation")
 

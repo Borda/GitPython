@@ -32,7 +32,7 @@ class TestRefs(TestBase):
     def test_from_path(self):
         # Should be able to create any reference directly.
         for ref_type in (Reference, Head, TagReference, RemoteReference):
-            for name in ("rela_name", "path/rela_name"):
+            for name in ("real_name", "path/rela_name"):
                 full_path = ref_type.to_full_path(name)
                 instance = ref_type.from_path(self.rorepo, full_path)
                 assert isinstance(instance, ref_type)
@@ -454,7 +454,7 @@ class TestRefs(TestBase):
 
         # Rename it.
         orig_obj = ref.object
-        for name in ("refs/absname", "rela_name", "feature/rela_name"):
+        for name in ("refs/absname", "real_name", "feature/rela_name"):
             ref_new_name = ref.rename(name)
             assert isinstance(ref_new_name, Reference)
             assert name in ref_new_name.path

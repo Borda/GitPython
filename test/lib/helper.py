@@ -386,7 +386,7 @@ class TestBase(TestCase):
         cls.rorepo.git.clear_cache()
         cls.rorepo.git = None
 
-    def _make_file(self, rela_path, data, repo=None):
+    def _make_file(self, real_path, data, repo=None):
         """
         Create a file at the given path relative to our repository, filled with the
         given data.
@@ -394,7 +394,7 @@ class TestBase(TestCase):
         :return: An absolute path to the created file.
         """
         repo = repo or self.rorepo
-        abs_path = osp.join(repo.working_tree_dir, rela_path)
+        abs_path = osp.join(repo.working_tree_dir, real_path)
         with open(abs_path, "w") as fp:
             fp.write(data)
         return abs_path

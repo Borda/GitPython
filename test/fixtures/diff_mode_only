@@ -260,7 +260,7 @@ index d873924860bf4da06ac93db5c6a188f63dd1c3cc..57da75f05e28e8a256922bf345ccd390
 +    # :text:: to_text, text/plain
 +    # :html:: to_html, text/html or application/xhtml+xml or application/html
 +    # :xml:: to_xml, application/xml or text/xml or application/x-xml, adds "Encoding: UTF-8" response header
-+    # :js:: to_json, text/javascript ot application/javascript or application/x-javascript
++    # :js:: to_json, text/javascript to application/javascript or application/x-javascript
 +    # :json:: to_json, application/json or text/x-json
 +    Merb.available_mime_types.clear
 +    Merb.add_mime_type(:all,  nil,      %w[*/*])
@@ -415,7 +415,7 @@ index d17570786ca318cff7201c4b1e947ae229b01de8..ff9abe4d1c452aeabfcf5f7dc7a2c7cd
  
      # Any specific outgoing headers should be included here.  These are not
      # the content-type header but anything in addition to it.
--    # +tranform_method+ should be set to a symbol of the method used to
+-    # +transform_method+ should be set to a symbol of the method used to
 +    # +transform_method+ should be set to a symbol of the method used to
      # transform a resource into this mime type.
      # For example for the :xml mime type an object might be transformed by
@@ -433,7 +433,7 @@ index d17570786ca318cff7201c4b1e947ae229b01de8..ff9abe4d1c452aeabfcf5f7dc7a2c7cd
 -    # :text:: to_text, text/plain
 -    # :html:: to_html, text/html or application/xhtml+xml or application/html
 -    # :xml:: to_xml, application/xml or text/xml or application/x-xml, adds "Encoding: UTF-8" response header
--    # :js:: to_json, text/javascript ot application/javascript or application/x-javascript
+-    # :js:: to_json, text/javascript to application/javascript or application/x-javascript
 -    # :json:: to_json, application/json or text/x-json
 -    def reset_default_mime_types!
 -      available_mime_types.clear
@@ -509,7 +509,7 @@ index e910b2b32c844ab51cf2a10d0ad26c314dbb3631..5ac67fb907aaf9f95effc7eb3cbb07b8
 -      # ==== Returns
 -      # The current list of formats provided for this instance of the controller. 
 -      # It starts with what has been set in the controller (or :html by default) 
--      # but can be modifed on a per-action basis.      
+-      # but can be modified on a per-action basis.      
 -      def _provided_formats
 -        @_provided_formats ||= class_provided_formats.dup
 +    end
@@ -517,7 +517,7 @@ index e910b2b32c844ab51cf2a10d0ad26c314dbb3631..5ac67fb907aaf9f95effc7eb3cbb07b8
 +    # ==== Returns
 +    # The current list of formats provided for this instance of the controller. 
 +    # It starts with what has been set in the controller (or :html by default) 
-+    # but can be modifed on a per-action basis.      
++    # but can be modified on a per-action basis.      
 +    def _provided_formats
 +      @_provided_formats ||= class_provided_formats.dup
 +    end
@@ -531,7 +531,7 @@ index e910b2b32c844ab51cf2a10d0ad26c314dbb3631..5ac67fb907aaf9f95effc7eb3cbb07b8
 +    #
 +    # ==== Raises
 +    # Merb::ResponderMixin::ContentTypeAlreadySet::
-+    #   Content negotiation already occured, and the content_type is set.
++    #   Content negotiation already occurred, and the content_type is set.
 +    #
 +    # ==== Returns
 +    # Array:: List of formats passed in
@@ -549,7 +549,7 @@ index e910b2b32c844ab51cf2a10d0ad26c314dbb3631..5ac67fb907aaf9f95effc7eb3cbb07b8
 -      #
 -      # ==== Raises
 -      # Merb::ResponderMixin::ContentTypeAlreadySet::
--      #   Content negotiation already occured, and the content_type is set.
+-      #   Content negotiation already occurred, and the content_type is set.
 -      #
 -      # ==== Returns
 -      # Array:: List of formats passed in
@@ -574,7 +574,7 @@ index e910b2b32c844ab51cf2a10d0ad26c314dbb3631..5ac67fb907aaf9f95effc7eb3cbb07b8
 +    #
 +    # ==== Raises
 +    # Merb::ResponderMixin::ContentTypeAlreadySet::
-+    #   Content negotiation already occured, and the content_type is set.
++    #   Content negotiation already occurred, and the content_type is set.
 +    #
 +    # ==== Returns
 +    # Array:: List of formats passed in
@@ -597,7 +597,7 @@ index e910b2b32c844ab51cf2a10d0ad26c314dbb3631..5ac67fb907aaf9f95effc7eb3cbb07b8
 -      #
 -      # ==== Raises
 -      # Merb::ResponderMixin::ContentTypeAlreadySet::
--      #   Content negotiation already occured, and the content_type is set.
+-      #   Content negotiation already occurred, and the content_type is set.
 -      #
 -      # ==== Returns
 -      # Array:: List of formats passed in
