@@ -1,4 +1,12 @@
 repos:
+- repo: https://github.com/crate-ci/typos
+  rev: v1.16.26
+  hooks:
+    - id: typos
+      # empty to do not write fixes
+      # args: []
+      exclude: pyproject.toml
+
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.3.2
   hooks:
