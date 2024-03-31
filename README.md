@@ -234,7 +234,7 @@ Please have a look at the [contributions file][contributing].
 - [Loki](https://github.com/Neo23x0/Loki)
 - [Omniwallet](https://github.com/OmniLayer/omniwallet)
 - [GitViper](https://github.com/BeayemX/GitViper)
-- [Git Good](https://github.com/bthayer2365/git-gud)
+- [Git Gud](https://github.com/bthayer2365/git-gud)
 
 ### LICENSE
 
