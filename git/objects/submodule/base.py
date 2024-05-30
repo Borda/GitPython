@@ -416,11 +416,11 @@ class Submodule(IndexObject, TraversableIterableObj):
             Absolute path to the bare repository.
         """
         git_file = osp.join(working_tree_dir, ".git")
-        relative_fpath = osp.relpath(module_abspath, start=working_tree_dir)
+        relative_path = osp.relpath(module_abspath, start=working_tree_dir)
         if sys.platform == "win32" and osp.isfile(git_file):
             os.remove(git_file)
         with open(git_file, "wb") as fp:
-            fp.write(("gitdir: %s" % relative_fpath).encode(defenc))
+            fp.write(("gitdir: %s" % relative_path).encode(defenc))
 
         with GitConfigParser(osp.join(module_abspath, "config"), read_only=False, merge_includes=False) as writer:
             writer.set_value(

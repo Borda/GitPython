@@ -272,7 +272,7 @@ class SymbolicReference:
         :return:
             *(str(sha), str(target_ref_path))*, where:
 
-            * *sha* is of the file at relative_fpath points to if available, or ``None``.
+            * *sha* is of the file at relative_path points to if available, or ``None``.
             * *target_ref_path* is the reference we point to, or ``None``.
         """
         return cls._get_ref_info_helper(repo, ref_path)
@@ -813,7 +813,7 @@ class SymbolicReference:
     ) -> Iterator[T_References]:
         if common_path is None:
             common_path = cls._common_path_default
-        relative_fpaths = set()
+        relative_paths = set()
 
         # Walk loose refs.
         # Currently we do not follow links.
@@ -828,19 +828,19 @@ class SymbolicReference:
                 if f == "packed-refs":
                     continue
                 abs_path = to_native_path_linux(join_path(root, f))
-                relative_fpaths.add(abs_path.replace(to_native_path_linux(repo.common_dir) + "/", ""))
+                relative_paths.add(abs_path.replace(to_native_path_linux(repo.common_dir) + "/", ""))
             # END for each file in root directory
         # END for each directory to walk
 
         # Read packed refs.
         for _sha, relative_fpath in cls._iter_packed_refs(repo):
             if relative_fpath.startswith(str(common_path)):
-                relative_fpaths.add(relative_fpath)
+                relative_paths.add(relative_fpath)
             # END relative path matches common path
         # END packed refs reading
 
         # Yield paths in sorted order.
-        for path in sorted(relative_fpaths):
+        for path in sorted(relative_paths):
             try:
                 yield cls.from_path(repo, path)
             except ValueError:
